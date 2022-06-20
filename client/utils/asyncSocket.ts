@@ -10,7 +10,7 @@ async function asyncSocket(port: number, ip: string, message: string) {
     socket.once("data", (data) => {
       socket.destroy();
 
-      accept(data);
+      accept(data.toString());
     });
 
     socket.once("error", (data) => {

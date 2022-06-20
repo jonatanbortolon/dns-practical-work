@@ -6,9 +6,9 @@
   "scripts": {
     "start:dev:client": "ts-node-dev --respawn --transpile-only --watch script ./client/src/index.ts",
     "start:dev:server": "ts-node-dev --respawn --transpile-only --watch script ./server/src/index.ts",
-    "build":"tsc --build",
-    "start:client":"node dist/client/index.js",
-    "start:server":"node dist/server/index.js",
+    "build": "tsc --build",
+    "start:client": "node dist/client/index.js",
+    "start:server": "node dist/server/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

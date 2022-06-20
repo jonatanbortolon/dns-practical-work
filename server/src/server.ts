@@ -4,9 +4,22 @@ import fs from "fs";
 class Server {
   private socket: net.Server;
   private database: { [key: string]: string };
+  private address: string;
   private port: number;
 
-  constructor({ port, databasePath }: { port: number; databasePath: string }) {
+  constructor({
+    address,
+    port,
+    databasePath,
+  }: {
+    address: string;
+    port: number;
+    databasePath: string;
+  }) {
+    if (!address) {
+      throw new Error("Address required!");
+    }
+
     if (!port) {
       throw new Error("Port required!");
     }
@@ -15,6 +28,7 @@ class Server {
       throw new Error("Database path required!");
     }
 
+    this.address = address;
     this.port = port;
 
     this.socket = net.createServer((socket) => {
@@ -36,8 +50,8 @@ class Server {
   }
 
   start() {
-    this.socket.listen(this.port, "127.0.0.1", () => {
-      console.log("Server started");
+    this.socket.listen(this.port, this.address, () => {
+      console.log("Server started at " + this.address + ":" + this.port);
     });
   }
 }
